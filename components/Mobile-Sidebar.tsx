@@ -8,11 +8,11 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import Sidebar from "@/components/Sidebar";
 
 export const MobileSidebar = ({
-  apiLimitCount = 0,
-  isPro = false
+  // apiLimitCount = 0,
+  // isPro = false
 }: {
-  apiLimitCount: number;
-  isPro: boolean;
+  // apiLimitCount: number;
+  // isPro: boolean;
 }) => {
   const [isMounted, setIsMounted] = useState(false);
 
