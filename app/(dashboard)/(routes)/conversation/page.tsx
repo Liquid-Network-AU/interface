@@ -9,6 +9,7 @@ import { Heading } from "@/components/Heading";
 import { formSchema } from "@/app/(dashboard)/(routes)/conversation/constants";
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 
 const ConversationPage = () => {
     const form = useForm<z.infer<typeof formSchema>>({
@@ -63,10 +64,13 @@ const ConversationPage = () => {
                                     </FormControl>
                                 </FormItem>
                             )}
-
                         />
+                        <Button className="col-span-12 col-span-2" disabled={isLoading}>Generate</Button>
                     </form>
                 </Form>
+            </div>
+            <div className="space-y-4 mt-4">
+                Messages content
             </div>
         </div>
     );
