@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { zodResolver } from '@hookform/resolvers/zod'
-import { MessageSquare } from "lucide-react";
+import { Code } from "lucide-react";
 import { useForm } from "react-hook-form";
 import axios from 'axios';
 import { ChatCompletionRequestMessage } from "openai";
@@ -20,7 +20,7 @@ import { cn } from "@/lib/utils";
 import { UserAvatar } from "@/components/User/Avatar";
 import { BotAvatar } from "@/components/User/BotAvatar";
 
-const ConversationPage = () => {
+const CodePage = () => {
     const router = useRouter();
     const [messages, setMessages] = useState<ChatCompletionRequestMessage[]>([])
 
@@ -40,7 +40,7 @@ const ConversationPage = () => {
             };
             
             const newMessages = [...messages, userMessage];
-            const response = await axios.post('/api/conversation', {
+            const response = await axios.post('/api/code', {
                 messages: newMessages,
             });
 
@@ -56,10 +56,10 @@ const ConversationPage = () => {
     return (
         <div>
             <Heading
-                title="Conversation AI"
-                description="A conversation model that you've made (test)"
-                Icon={MessageSquare}
-                iconColor="text-violet-500"
+                title="Code Generation"
+                description="A generative model that you've made (test)"
+                Icon={Code}
+                iconColor="text-green-700"
                 bgColor="bg-violet-500/10"
             />
             <div className="px-4 lg:px-8">
@@ -87,7 +87,7 @@ const ConversationPage = () => {
                                         <Input
                                             className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent"
                                             disabled={isLoading}
-                                            placeholder="How do I calculate the radius of a pebis?"
+                                            placeholder="Use react hooks to draw a pebis?"
                                             {...field}
                                         />
                                     </FormControl>
@@ -121,4 +121,4 @@ const ConversationPage = () => {
     );
 };
 
-export default ConversationPage;
+export default CodePage;
