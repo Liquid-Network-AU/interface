@@ -6,7 +6,7 @@ import { Configuration, OpenAIApi } from "openai";
 // import { incrementApiLimit, checkApiLimit } from "@/lib/api-limit";
 
 const configuration = new Configuration({
-    apiKey: "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",
+    apiKey: "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",
 });
 
 const openai = new OpenAIApi(configuration);
