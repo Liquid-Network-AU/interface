@@ -15,13 +15,10 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button"
 import { Empty } from "@/components/Empty";
 import { Loader } from "@/components/Loader";
-import { cn } from "@/lib/utils";
-import { UserAvatar } from "@/components/User/Avatar";
-import { BotAvatar } from "@/components/User/BotAvatar";
 
-const ConversationPage = () => {
+const MusicPage = () => {
     const router = useRouter();
-    const [messages, setMessages] = useState([])
+    const [music, setMusic] = useState<string>();
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -33,7 +30,10 @@ const ConversationPage = () => {
     const isLoading = form.formState.isSubmitting;
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
         try {
-            console.log('');
+            setMusic(undefined);
+            const response = await axios.post("/api/music", values);
+            setMusic(response.data.audio);
+            form.reset();
         } catch (error: any) {
             console.log(error);
         } finally {
@@ -90,13 +90,17 @@ const ConversationPage = () => {
                 {isLoading && (
                     <div className="p-8 rounded-lg w-full flex items-center justify-center bg-muted"><Loader /></div>
                 )}
-                {messages.length === 0 && !isLoading && (
+                {!music && !isLoading && (
                     <Empty label="No audio generated" />
                 )}
-                <div>Music will be generated here</div>
+                {music && (
+                    <audio controls className="w-full mt-8">
+                        <source src={music} />
+                    </audio>
+                )}
             </div>
         </div>
     );
 };
 
-export default ConversationPage;
+export default MusicPage;
