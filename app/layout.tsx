@@ -10,19 +10,31 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Ember',
-  description: 'Ember',
+  description: 'AI by Talon Group',
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <ClerkProvider>
-      <html lang="en">
-        <body className={inter.className}>{children}</body>
-      </html>
-    </ClerkProvider>
+    <html lang="en">
+      <body>
+        <div className='container' style={{ padding: '50px 0 100px 0'}}>
+          {children}
+        </div>
+      </body>
+    </html>
   );
 };
+
+// export default function RootLayout({
+//   children,
+// }: {
+//   children: React.ReactNode
+// }) {
+//   return (
+//     <ClerkProvider>
+//       <html lang="en">
+//         <body className={inter.className}>{children}</body>
+//       </html>
+//     </ClerkProvider>
+//   );
+// };
