@@ -1,20 +1,20 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import AuthForm from "@/components/User/auth/auth-form";
 
 const LandingPage = () => {
   return (
-    <div>
-        Landing Page (Unprotected)
-        <div>
-            <Link href='/sign-in'>
-                <Button>Login</Button>
-            </Link>
-            <Link href='/sign-up'>
-                <Button>Register</Button>
-            </Link>
-        </div>
+    <div className="row">
+      <div className="col-6">
+        <h1 className="header">Supabase Auth + Storage</h1>
+        <p className="">
+          Experience our Auth and Storage through a simple profile management example. Create a user
+          profile and upload an avatar image. Fast, simple, secure.
+        </p>
+      </div>
+      <div className="col-6 auth-widget">
+        <AuthForm />
+      </div>
     </div>
-  );  
+  )
 }
-
-export default LandingPage;
