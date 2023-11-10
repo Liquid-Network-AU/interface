@@ -1,40 +1,38 @@
-// Main Next/react imports
-import './globals.css';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-
-// Auth/user management
-import { ClerkProvider } from '@clerk/nextjs';
+import { Inter, Jost } from 'next/font/google';
+import './globals.css';
+import { ThemeProvider } from '@/components/theme-provider';
+import { Toaster } from '@/components/ui/toaster';
 
 const inter = Inter({ subsets: ['latin'] });
+const jost = Jost({
+  subsets: ["latin"],
+  weight: ["100", "300", "400", "500", "600", "700"],
+});
 
 export const metadata: Metadata = {
-  title: 'Ember',
-  description: 'AI by Talon Group',
-};
+  title: 'Embr',
+  description: 'AI Toolings',
+}
 
-export default async function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <html lang="en">
-      <body>
-        <div className='container' style={{ padding: '50px 0 100px 0'}}>
-          {children}
-        </div>
-      </body>
-    </html>
-  );
-};
-
-// export default function RootLayout({
-//   children,
-// }: {
-//   children: React.ReactNode
-// }) {
-//   return (
-//     <ClerkProvider>
-//       <html lang="en">
-//         <body className={inter.className}>{children}</body>
-//       </html>
-//     </ClerkProvider>
-//   );
-// };
+		<html lang="en" suppressHydrationWarning>
+			<body className={`${jost.className} antialiased dark:bg-[#09090B]`}>
+				<ThemeProvider
+					attribute="class"
+					defaultTheme="dark"
+					enableSystem
+					disableTransitionOnChange
+				>
+					<main className="">{children}</main>
+					<Toaster />
+				</ThemeProvider>
+			</body>
+		</html>
+	);
+}
