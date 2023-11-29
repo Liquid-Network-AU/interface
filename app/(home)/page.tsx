@@ -1,4 +1,4 @@
-import WelcomeBackUserBlock from "@/components/blocks/Intro";
+import WelcomeBackUserBlock, { NewModelsBlock } from "@/components/blocks/Intro";
 import Sidebar, { FigmaSidebar, SidebarComp } from "@/components/dashboard/Sidebar";
 import MobileSideNav from "@/components/dashboard/SidebarMobile";
 import ToggleSidebar from "@/components/dashboard/ToggleSidebar";
@@ -11,6 +11,7 @@ export default function Home() {
             <FigmaSidebar />
             <div className="flex-grow py-3">
                 <WelcomeBackUserBlock />
+                <NewModelsBlock />
             </div>
         </div>
     )
