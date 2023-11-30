@@ -1,3 +1,4 @@
+import RecentChatsBlock from "@/components/blocks/Chats";
 import WelcomeBackUserBlock, { NewModelsBlock } from "@/components/blocks/Intro";
 import Sidebar, { FigmaSidebar, SidebarComp } from "@/components/dashboard/Sidebar";
 import MobileSideNav from "@/components/dashboard/SidebarMobile";
@@ -12,6 +13,7 @@ export default function Home() {
             <div className="flex-grow py-3">
                 <WelcomeBackUserBlock />
                 <NewModelsBlock />
+                <RecentChatsBlock />
             </div>
         </div>
     )
